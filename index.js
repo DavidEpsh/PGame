@@ -9,11 +9,11 @@ app.get("/", function(req, res) {
 });
 
 app.get("/player.html", function(req, res) {
-  res.sendFile(__dirname + "/player.html");
+  res.sendFile(__dirname + "/public/player.html");
 });
 
 app.get("/dealer.html", function(req, res) {
-  res.sendFile(__dirname + "/dealer.html");
+  res.sendFile(__dirname + "/public/dealer.html");
 });
 
 app.listen(port, () => console.log(`app listening on port ${port}!`));
