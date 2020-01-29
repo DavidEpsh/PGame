@@ -1,4 +1,8 @@
-import io from "/socket.io/socket.io-client";
-// io = require("/socket.io/socket.io-client");
-var ioClient = io.connect("http://localhost:63343");
-// ioClient = io.connect("http://localhost:8000");
+var socket = io();
+socket.emit('new-user', 'player');
+
+socket.on('cards', function(cards){
+    document.getElementById("card1").src = "cards/" + cards[0];
+    document.getElementById("card2").src = "cards/" + cards[1];
+    console.log(cards);
+});

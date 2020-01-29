@@ -5,14 +5,15 @@
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="dealer.css"/>
 </head>
+<script src="/socket.io/socket.io.js"></script>
 <body onload="showButton('')">
 <h1>Dealer</h1>
 <div style="display: flex; justify-content: center; align-items: center">
-    <img src="cards/BLUE_BACK.svg" alt="flop1">
-    <img src="cards/BLUE_BACK.svg" alt="flop2">
-    <img src="cards/BLUE_BACK.svg" alt="flop3">
-    <img src="cards/BLUE_BACK.svg" alt="turn">
-    <img src="cards/BLUE_BACK.svg" alt="river">
+    <img src="cards/BLUE_BACK.svg" alt="flop1" id="card1">
+    <img src="cards/BLUE_BACK.svg" alt="flop2" id="card2">
+    <img src="cards/BLUE_BACK.svg" alt="flop3" id="card3">
+    <img src="cards/BLUE_BACK.svg" alt="turn" id="card4">
+    <img src="cards/BLUE_BACK.svg" alt="river" id="card5">
 </div>
 <div>
     <button id="newGame">Deal</button>
