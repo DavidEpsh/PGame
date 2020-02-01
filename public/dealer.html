@@ -7,20 +7,20 @@
 </head>
 <script src="/socket.io/socket.io.js"></script>
 <body onload="showButton('')">
-<h1>Dealer</h1>
-<div style="display: flex; justify-content: center; align-items: center">
-    <img src="cards/BLUE_BACK.svg" alt="flop1" id="card1">
-    <img src="cards/BLUE_BACK.svg" alt="flop2" id="card2">
-    <img src="cards/BLUE_BACK.svg" alt="flop3" id="card3">
-    <img src="cards/BLUE_BACK.svg" alt="turn" id="card4">
-    <img src="cards/BLUE_BACK.svg" alt="river" id="card5">
-</div>
-<div>
-    <button id="newGame">Deal</button>
-    <button id="flop">Flop</button>
-    <button id="turn">Turn</button>
-    <button id="river">River</button>
-</div>
+    <strong id="game_id">Dealer</strong>
+    <div class="row">
+        <img src="cards/BLUE_BACK.svg" alt="flop1" id="card1">
+        <img src="cards/BLUE_BACK.svg" alt="flop2" id="card2">
+        <img src="cards/BLUE_BACK.svg" alt="flop3" id="card3">
+        <img src="cards/BLUE_BACK.svg" alt="turn" id="card4">
+        <img src="cards/BLUE_BACK.svg" alt="river" id="card5">
+    </div>
+    <div>
+        <button id="newGame">Deal</button>
+        <button id="flop">Flop</button>
+        <button id="turn">Turn</button>
+        <button id="river">River</button>
+    </div>
 </body>
 <script src="dealer.js" type="text/javascript"></script>
 </html>
