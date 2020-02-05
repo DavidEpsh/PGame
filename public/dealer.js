@@ -1,10 +1,17 @@
-document.getElementById("newGame").addEventListener("click", newGame);
-document.getElementById("flop").addEventListener("click", dealFlop);
-document.getElementById("turn").addEventListener("click", dealTurn);
-document.getElementById("river").addEventListener("click", dealRiver);
+document.getElementById("newGame").addEventListener("click", function(){ deal(true); });
+document.getElementById("deal").addEventListener("click", function(){ deal(false)});
 
 var socket = io();
 socket.emit('new-user', 'dealer');
+
+const GameState = {
+    NEW_GAME: 1,
+    FLOP: 2,
+    TURN: 3,
+    RIVER: 4
+};
+
+let currentState = 1;
 
 socket.on('cards', function (cards) {
     console.log(cards);
@@ -30,34 +37,43 @@ function resetCards() {
     }
 }
 
-function newGame() {
-    resetCards();
-    socket.emit('new-game', {hello: 'world'});
-    showButton('flop');
+function deal(isNewGame) {
+    if(isNewGame) {
+        resetCards();
+        currentState = GameState.NEW_GAME;
+        socket.emit('new-game');
+    } else {
+        currentState += 1;
+    }
+
+    let button = document.getElementById("deal");
+
+    switch(currentState){
+        case GameState.NEW_GAME:
+            button.style.display = "block";
+            button.innerText = "Flop";
+            break;
+        case GameState.FLOP:
+            button.innerText = "Turn";
+            socket.emit('flop');
+            break;
+        case GameState.TURN:
+            button.innerText = "River";
+            socket.emit('turn');
+            break;
+        case GameState.RIVER:
+            button.style.display = "none";
+            socket.emit('river');
+            break;
+    }
 }
 
-function dealFlop() {
-    socket.emit('flop');
-    showButton('turn');
-}
-
-function dealTurn() {
-    socket.emit('turn');
-    showButton('river');
-}
-
-function dealRiver() {
-    socket.emit('river');
-    showButton('');
-}
-
-function showButton(buttonId) {
-    ["flop", "turn", "river"].forEach(item => {
-        let x = document.getElementById(item);
-        if (item !== buttonId) {
-            x.style.display = "none";
-        } else {
-            x.style.display = "block";
-        }
-    });
-}
+document.addEventListener('keydown', function(event) {
+    console.log(event);
+    if(event.key === 'ArrowUp') {
+        deal(true)
+    }
+    else if(event.key === 'ArrowDown') {
+        deal(false)
+    }
+});

@@ -39,7 +39,7 @@ io.on('connection', function (socket) {
     console.log(`Remaining sockets: ${sockets.size}`);
   });
 
-  socket.on('new-game', function (e) {
+  socket.on('new-game', function () {
     currentGameCards = new Set();
     console.log("new game is starting");
     let totalCards = ((sockets.size - 1) * 2) + 5;
@@ -91,4 +91,4 @@ laptop = '10.144.43.207';
 desktop = '10.144.43.145';
 gcp = '35.246.253.99';
 // server.listen(port, () => console.log(`app listening on port ${port}!`));
-server.listen(port, gcp, () => console.log(`app listening on port ${port}!`));
+server.listen(port, () => console.log(`app listening on port ${port}!`));
