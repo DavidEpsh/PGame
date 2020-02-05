@@ -91,4 +91,4 @@ laptop = '10.144.43.207';
 desktop = '10.144.43.145';
 gcp = '35.246.253.99';
 // server.listen(port, () => console.log(`app listening on port ${port}!`));
-server.listen(port, gcp, () => console.log(`app listening on port ${port}!`));
+server.listen(port, () => console.log(`app listening on port ${port}!`));

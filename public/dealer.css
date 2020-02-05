@@ -18,3 +18,8 @@ body {
 img {
     margin: auto;
 }
+
+button {
+    padding: 40px;
+    margin-top: 20px;
+}
